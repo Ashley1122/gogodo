@@ -48,12 +48,22 @@
         {
           "icon": "./assets/notification-icon.png",
           "color": "#ffffff",
-          "sounds": ["./assets/alarm.mp3"]
+          "sounds": [
+            "./assets/alarm.mp3"
+          ]
         }
       ]
     ],
     "experiments": {
       "typedRoutes": true
+    },
+    "extra": {
+      "router": {
+        "origin": false
+      },
+      "eas": {
+        "projectId": "b543c649-a4e8-4313-a683-0cc71743add8"
+      }
     }
   }
 }
