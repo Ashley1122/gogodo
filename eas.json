@@ -21,12 +21,5 @@
   },
   "submit": {
     "production": {}
-  },
-  "update": {
-    "production": {
-      "android": {
-        "enabled": true
-      }
-    }
   }
 }

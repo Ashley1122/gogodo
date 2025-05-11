@@ -1,22 +1,22 @@
 import { GoogleGenerativeAI } from '@google/generative-ai';
-import { GOOGLE_GENAI_API_KEY } from '@env';
+import { EXPO_PUBLIC_GOOGLE_GENAI_API_KEY } from '@env';
 import * as Network from 'expo-network';
 
 // Comprehensive logging for environment and API key
 console.log('Environment Variables Check:', {
-  API_KEY_PRESENT: !!GOOGLE_GENAI_API_KEY,
-  API_KEY_LENGTH: GOOGLE_GENAI_API_KEY?.length,
-  API_KEY_STARTS_WITH: GOOGLE_GENAI_API_KEY?.substring(0, 5)
+  API_KEY_PRESENT: !!EXPO_PUBLIC_GOOGLE_GENAI_API_KEY,
+  API_KEY_LENGTH: EXPO_PUBLIC_GOOGLE_GENAI_API_KEY?.length,
+  API_KEY_STARTS_WITH: EXPO_PUBLIC_GOOGLE_GENAI_API_KEY?.substring(0, 5)
 });
 
 // Validate Google AI API Key
 export function validateGoogleAIApiKey(): boolean {
-  if (!GOOGLE_GENAI_API_KEY) {
+  if (!EXPO_PUBLIC_GOOGLE_GENAI_API_KEY) {
     console.error('❌ CRITICAL: GOOGLE_GENAI_API_KEY is undefined or null');
     throw new Error('Google AI API Key is missing');
   }
 
-  const trimmedKey = GOOGLE_GENAI_API_KEY.trim();
+  const trimmedKey = EXPO_PUBLIC_GOOGLE_GENAI_API_KEY.trim();
   
   if (trimmedKey.length === 0) {
     console.error('❌ CRITICAL: GOOGLE_GENAI_API_KEY is an empty string');
@@ -58,7 +58,7 @@ export async function checkNetworkConnectivity(): Promise<{
 let googleAI: GoogleGenerativeAI | null = null;
 try {
   validateGoogleAIApiKey();
-  googleAI = new GoogleGenerativeAI(GOOGLE_GENAI_API_KEY);
+  googleAI = new GoogleGenerativeAI(EXPO_PUBLIC_GOOGLE_GENAI_API_KEY);
 } catch (error) {
   console.error('❌ Failed to initialize GoogleGenerativeAI:', {
     message: (error as Error).message,
