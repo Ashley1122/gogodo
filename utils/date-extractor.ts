@@ -1,4 +1,4 @@
-import { generateText } from './ai-instance';
+import { safeGenerateText } from './ai-instance';
 
 interface ExtractDateTimeInput {
   taskDescription: string;
@@ -40,7 +40,7 @@ Rules:
 Task Description: ${taskDescription}`;
 
   try {
-    const response = await generateText(prompt);
+    const response = await safeGenerateText(prompt);
     // Clean the response to ensure it's valid JSON
     const cleanedResponse = response.trim().replace(/^[^{]*/, '').replace(/[^}]*$/, '');
     const result = JSON.parse(cleanedResponse);

@@ -8,6 +8,10 @@
     "scheme": "myapp",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
+    "updates": {
+      "url": "https://u.expo.dev/b543c649-a4e8-4313-a683-0cc71743add8",
+      "fallbackToCacheTimeout": 60000
+    },
     "ios": {
       "supportsTablet": true,
       "infoPlist": {
@@ -21,6 +25,8 @@
         "backgroundColor": "#ffffff"
       },
       "permissions": [
+        "android.permission.RECORD_AUDIO",
+        "android.permission.RECORD_AUDIO",
         "android.permission.RECORD_AUDIO",
         "android.permission.RECORD_AUDIO"
       ],
@@ -64,6 +70,9 @@
       "eas": {
         "projectId": "b543c649-a4e8-4313-a683-0cc71743add8"
       }
+    },
+    "runtimeVersion": {
+      "policy": "appVersion"
     }
   }
 }

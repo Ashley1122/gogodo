@@ -1,4 +1,4 @@
-import { generateText } from './ai-instance';
+import { safeGenerateText } from './ai-instance';
 
 interface Task {
   id: number;
@@ -29,7 +29,7 @@ Question: ${query}
 Please provide a helpful and concise answer about the user's tasks.`;
 
   try {
-    const answer = await generateText(prompt);
+    const answer = await safeGenerateText(prompt);
     return { answer };
   } catch (error) {
     console.error('Error generating answer:', error);

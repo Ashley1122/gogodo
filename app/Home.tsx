@@ -2,8 +2,6 @@ import React, { useEffect, useState } from 'react'
 import { SafeAreaView, View, Text, TextInput, StyleSheet, TouchableOpacity, Modal, Animated, Alert } from "react-native";
 import * as Updates from 'expo-updates';
 import List from "../components/List";
-import { auth } from "../utils/firebase";
-import GlobalState from "../utils/GlobalState";
 import Ionicon from "@expo/vector-icons/Ionicons";
 import Database from "../utils/database";
 import { answerTaskQuery } from "../utils/task-query";
@@ -59,15 +57,6 @@ const Home = () => {
     };
 
     initApp();
-  }, []);
-
-  useEffect(() => {
-    const unsubscribe = auth.onAuthStateChanged((user: any) => {
-      GlobalState.setUser(user);
-      setLoading(false)
-    });
-
-    return () => unsubscribe();
   }, []);
 
   useEffect(() => {
