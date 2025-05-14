@@ -148,13 +148,20 @@ const Home = () => {
         day: 'numeric' 
       });
 
+      console.log('Current date:', currentDate);
+      console.log('Todo text:', todo);
+
       // Extract date and time from the todo description
       const dateTimeInfo = await extractDateTime({
         taskDescription: todo,
         currentDate
       });
 
+      console.log('Extracted date info:', dateTimeInfo);
+
       const formattedDate = `${dateTimeInfo.dueDate} at ${dateTimeInfo.dueTime}`;
+      console.log('Formatted date:', formattedDate);
+
       const newId = await Database.addTodo(todo, formattedDate);
       
       // Create todo object
@@ -169,15 +176,17 @@ const Home = () => {
       setTodos([...todos, newTodo]);
       
       // Schedule notification
-      await NotificationUtils.scheduleTodoNotification({
+      const notificationId = await NotificationUtils.scheduleTodoNotification({
         id: newId,
         item: todo,
         date: formattedDate
       });
 
+      console.log('Notification scheduled with ID:', notificationId);
+
       setTodo("");
     } catch (error) {
-      console.error("Error adding todo", error);
+      console.error("Error adding todo:", error);
     }
   }
 
@@ -354,7 +363,7 @@ const styles = StyleSheet.create({
   floatingAiButton: {
     position: 'absolute',
     right: 20,
-    bottom: 100,
+    bottom: 150,
     backgroundColor: '#007bff',
     width: 56,
     height: 56,
